@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="ipo-calculator">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>IPO Calculator</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.5.x" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js" data-semver="1.5.11"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <p> Company name - <input type="text" ng-model="companyName"> </p>
+    <p> Issue price - <input type="number" ng-model="issuePrice"> / share </p>
+    <p> Lot size - <input type="number" ng-model="lotSize"> / lot </p>
+    <!--<p> NII shares offerred - <input type="number" ng-model="niiShareSize"> </p>-->
+    <p> NII subscription detail - <input type="number" ng-model="niiSubscription"> </p>
+    <p> Listing day price - <input type="number" ng-model="listingPrice"> </p>
+    <p> <button ng-click="calculateMinAmount()">Calculate</button></p>
+    <p> 
+        Minimum shares to apply - {{minSharesApplied}}> 
+        Minimum investment amount - {{minInvestmentAmount}}>
+        <input type="checkbox" ng-model="selectMinValue" ng-change="changeSelect()">
+    </p>
+    <p> Total investment amount - <input type="number" ng-model="investmentAmount"> </p>
+    <p> Loan amount - <input type="number" ng-model="loanInvestmentAmount" ng-blur="investmentCalculation(loan)"> at <input type="number" ng-model="loanInterestRate"> % pa </p>
+    <p> Personal amount - <input type="number" ng-model="personalInvestmentAmount" ng-blur="investmentCalculation(personal)"> </p>
+    <p> days for redemption of unallotted cash - <input type="number" ng-model="daysForCashRedemption"> </p>
+    <p> days for listing - <input type="number" ng-model="daysForListing"> </p>
+    
+    <p> <button ng-click="calculate()">Calculate</button></p>
+    
+    <p> shares applied - {{sharesApplied}} </p>
+    <p> total shares allocated - {{sharesAllocated}} (INR {{sharesAllocated*issuePrice}})</p>
+    <p> total profit - {{totalProfit}} </p>
+    
+  </body>
+
+</html>
